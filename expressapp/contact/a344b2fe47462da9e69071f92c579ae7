@@ -1,0 +1,61 @@
+CREATE TABLE [dbo].[client]( 
+        [id] [int] IDENTITY(1,1) NOT NULL, 
+        [fname] [nvarchar](50) NULL, 
+        [name] [nvarchar](50) NULL, 
+        [sname] [nvarchar](50) NULL, 
+        [gender] [nchar](1) NULL, 
+        [phone] [nchar](12) NULL, 
+        [birtday] [date] NULL, 
+        [email] [nchar](30) NULL, 
+        [dateregist] [date] NOT NULL, 
+ CONSTRAINT [PK_client] PRIMARY KEY CLUSTERED 
+( 
+        [id] ASC 
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]) ON [PRIMARY] 
+GO 
+/****** Object:  Table [dbo].[Client_servic]    Script Date: 13.11.2021 12:58:19 ******/ 
+SET ANSI_NULLS ON 
+GO 
+SET QUOTED_IDENTIFIER ON 
+GO 
+CREATE TABLE [dbo].[Client_servic]( 
+        [service] [int] NOT NULL, 
+        [dateStart] [nchar](10) NULL, 
+        [client] [int] NOT NULL, 
+ CONSTRAINT [PK_Client_servic] PRIMARY KEY CLUSTERED 
+( 
+        [service] ASC, 
+        [client] ASC 
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+
+) ON [PRIMARY] 
+GO 
+/****** Object:  Table [dbo].[Servic]    Script Date: 13.11.2021 12:58:19 ******/ 
+SET ANSI_NULLS ON 
+GO 
+SET QUOTED_IDENTIFIER ON 
+GO 
+CREATE TABLE [dbo].[Servic]( 
+        [id_servis] [int] IDENTITY(1,1) NOT NULL, 
+        [name] [nvarchar](150) NULL, 
+        [time] [int] NULL, 
+        [cost] [smallmoney] NULL, 
+        [discount] [int] NULL, 
+ CONSTRAINT [PK_Servic] PRIMARY KEY CLUSTERED 
+( 
+        [id_servis] ASC 
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+
+) ON [PRIMARY] 
+GO 
+ALTER TABLE [dbo].[Client_servic]  WITH CHECK ADD  CONSTRAINT [FK_Client_servic_client] FOREIGN KEY([client]) 
+REFERENCES [dbo].[client] ([id]) 
+GO 
+ALTER TABLE [dbo].[Client_servic] CHECK CONSTRAINT [FK_Client_servic_client] 
+GO 
+ALTER TABLE [dbo].[Client_servic]  WITH CHECK ADD  CONSTRAINT [FK_Client_servic_Servic] FOREIGN KEY([service]) 
+REFERENCES [dbo].[Servic] ([id_servis]) 
+GO 
+ALTER TABLE [dbo].[Client_servic] CHECK CONSTRAINT [FK_Client_servic_Servic] 
+GO
+

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>  
+   <div class="b2"> <nav><a href="/">Регистрация</a> | <a href="/contact">Оставить вопрос</a>| <a href="/message">Все вопросы</a></nav>
+   </div> 
+   <title>Регистрация</title>
+    <meta charset="utf-8" />
+    <style>
+        button{
+            width: 300px;
+            height: 50px;
+            font-size: 28px;         
+            border-radius: 10px;            
+        }
+        .b2{
+            margin-top: 15px;
+            width: 600px;
+        }
+        a{
+            background-color: blanchedalmond;
+            text-decoration:none;
+            border-radius: 10px;
+        }
+        nav{
+            margin: auto;             
+        }
+     
+        form{
+            margin-left: 100px;
+        }
+        input{
+            width: 200px;
+            height: 30px;         
+            font-size: 15px;
+            border: 3px solid black;
+        }
+        body { 
+            font-size: 28px;
+            width: 600px;
+            margin: auto; /* Убираем отступы */
+            background-color: grey;
+        }
+    </style>
+</head>
+<body>
+    
+   
+    <div class="1">
+    <h1>Введите данные</h1>
+    <form name="registerForm" >
+        <label>Имя</label></br>
+        <input type="text" name="userName" /></br></br>
+        <label>Пароль</label></br>
+        <input type="password" name="userPassword" /></br></br>     
+        <label>Телефон</label></br>
+        <input type="tel" name="userPhone" /></br></br>
+        <label>Email</label></br>
+        <input type="email" name="userEmail" /></br></br>
+        <label>Пол</label></br>
+        <input type="text" name="userGender" /></br></br><br> 
+        <button type="submit" id="submit">Отправить</button>
+          </form><br>  
+         </div>  
+    <script>
+
+        document.getElementById("submit").addEventListener("click", function (e) {
+             e.preventDefault();
+            // получаем данные формы
+            let registerForm = document.forms["registerForm"];
+            let userName = registerForm.elements["userName"].value;
+            let userPassword = registerForm.elements["userPassword"].value;
+            let userPhone = registerForm.elements["userPhone"].value;
+            let userEmail = registerForm.elements["userEmail"].value;
+            let userGender = registerForm.elements["userGender"].value;
+           
+            // сериализуем данные в json
+            let user = JSON.stringify({userName: userName, userPassword: userPassword, userPhone: userPhone, userEmail: userEmail,userGender: userGender});
+            let request = new XMLHttpRequest();
+            // посылаем запрос на адрес "/user"
+             request.open("POST", "/user", true);   
+             request.setRequestHeader("Content-Type", "application/json");
+             request.addEventListener("load", function () {
+                // получаем и парсим ответ сервера
+                 let receivedUser = JSON.parse(request.response);
+                 alert(receivedUser);   // смотрим ответ сервера
+                 if (receivedUser==1){
+                    location.reload();
+                 }
+             });
+             request.send(user);
+                   });
+    </script>
+</body>
+<html>

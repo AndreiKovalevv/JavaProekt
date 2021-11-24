@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+       button{
+            width: 300px;
+            height: 50px;
+            font-size: 28px;         
+            border-radius: 10px;            
+        }
+      
+        .b2{
+            margin-top: 15px;
+            width: 600px;
+        }
+        a{
+            background-color: blanchedalmond;
+            text-decoration:none;
+            border-radius: 10px;
+        }
+        nav{
+            margin: auto;             
+        }
+        
+        form{
+            margin-left: 100px;
+        }
+        input{
+            width: 200px;
+            height: 30px;         
+            font-size: 15px;
+            border: 3px solid black;
+        }
+        body { 
+            font-size: 28px;
+            width: 600px;
+            margin: auto; /* Убираем отступы */
+            background-color: grey;
+        }
+        </style>
+    <title>Оставить вопрос</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+  <div class="b2"><nav><a href="/">Регистрация</a> | <a href="/contact">Оставить вопрос</a>| <a href="/message">Все вопросы</a></nav></div>
+  <h1>Оставить вопрос</h1>
+  <form  method="post" enctype="multipart/form-data">
+     <label>Имя</label></br>
+    <input type="text" name="userNameVopros" /></br></br>
+   <label>Ваш вопрос</label></br>
+    <input type="text" name="usersVopros" /></br></br>
+    <label>Ваш Emai</label></br>
+    <input type="text" name="usersVoprosEmails" /></br></br>
+    
+        <label>Файл</label><br>
+        <input type="file" name="filedata" /><br>    
+
+   <br>
+   <input type="submit" value="Отправить" onclick="">
+       </form> 
+    
+</body>
+<html>

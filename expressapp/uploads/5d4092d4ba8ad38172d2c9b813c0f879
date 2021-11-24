@@ -1,0 +1,30 @@
+<?php
+header("Content-Type: text/html; charset=UTF-8");
+?>
+<html>  
+<head>
+<title> Измененный массив</title>
+</head>
+
+<body>
+    <?PHP
+        $url = "mas4.txt";
+        if(!file_exists($url)) 
+        {
+            echo "В массиве нет данных!";
+            return;
+        }
+        $arr=file($url);
+        print("<table border=1> <tr><td colspan=3> Все комментарии</td>");
+        print("<tr> <th>Имя</th> <th>email</th> <th>Комментарий</th>");
+        $i=0;
+        while($i<count($arr))
+        {
+            echo "<tr> <th>".$arr[$i++]."</th> <th>".$arr[$i++]."</th><th>".$arr[$i++]."</th>"; 
+           
+        }
+        print("</table>");
+        
+    ?>
+</body>
+</html>

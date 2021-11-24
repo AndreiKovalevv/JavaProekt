@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <style>
+        button{
+            width: 300px;
+            height: 50px;
+            font-size: 28px;
+        
+            border-radius: 10px;
+        }
+        .b2{
+        margin-top: 15px;
+            width: 600px;
+        }
+        a{
+            background-color: blanchedalmond;
+            text-decoration:none;
+            border-radius: 10px;
+        }
+        nav{
+            margin: auto;             
+        }
+        input{
+            width: 200px;
+            height: 30px;
+            font-size: 15px;
+            border: 3px solid black;
+        }
+        body { 
+            font-size: 28px;
+            
+            width: 600px;
+            margin: auto; /* Убираем отступы */
+            background-color: grey;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <title>Просмотр всех сообщений</title>
+  </head>
+  <body>
+    <div class="b2"><nav><a href="/">Регистрация</a> | <a href="/contact">Оставить вопрос</a>| <a href="/message">Все вопросы</a></nav></div> 
+  <h3>Сообщения</h3>
+  <label  >Последние сообщения</label>
+  <table border=1> <tr><td colspan=3> Все комментарии</td>
+    <tr> <th>Пользователь</th> <th>Комментарий</th> <th>Фото</th><th>Email</th>
+      {{#each dataRes}} 
+      <tr><th>{{ NameQuestion}}</th> <th>{{Question}}</th><th><img src="index/{{  QuestionPhoto }}" width="200px" height="200px"></th><th>{{QuestionEmail}}
+        {{/each}}
+         
+  </table>
+  </form>
+
+
+  </body>
+</html>
